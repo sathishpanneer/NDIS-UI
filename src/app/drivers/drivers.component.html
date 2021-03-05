@@ -1,0 +1,114 @@
+<div class="search">
+  
+    <mat-form-field appearance="outline" style="padding-top: 25px;">
+      
+      <mat-label>Search</mat-label>
+      <input #txtVal (keyup)="applyFilter(txtVal.value)" matInput>
+      <mat-icon matPrefix>search</mat-icon>
+    </mat-form-field>
+    <button mat-fab style=" position: relative; left: 66%; background-color:  rgb(67, 186, 233);" (click)="AddDriver()" matToolTip="Add new">
+        <mat-icon aria-label="add">add</mat-icon>
+      </button>
+  <!-- <div class="spacer"></div>
+
+    <p>Report for</p>&nbsp; &nbsp; <p style="font-weight: 500;"> Last 30 days</p> &nbsp;
+    <div style="display: flex;">
+      <mat-icon style="width: 10px;" >date_range</mat-icon>  &nbsp; &nbsp;  
+    <mat-icon >keyboard_arrow_down</mat-icon>&nbsp;
+     <mat-icon >notifications</mat-icon> &nbsp;  &nbsp;  
+     <p style="font-weight: 500;">Alex</p>  &nbsp;
+    <mat-icon >person</mat-icon>
+  </div> -->
+</div>
+<!-- <div style="position: relative; bottom: 1%; left: 85%;">   -->
+  <!-- <input type="button" class="btn btn-danger" (click)="DeleteData()" value="Bulk Edit">   -->
+  <!-- <button  mat-raised-button style="background-color: rgb(67, 186, 233); color: white; " type="button" (click)="DeleteData()" >Bulk Edit</button> -->
+      <!-- </div> -->
+      
+<div class="example-container mat-elevation-z8">
+    <mat-table style="height: 91%; overflow: auto;" #table [dataSource]="dataSource" matSort  matSortDisableClear matSortDirection="desc" >
+  
+      <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+  
+      <!-- Position Column -->
+      
+      <ng-container matColumnDef="select">  
+        <th  mat-header-cell *matHeaderCellDef>  
+            <mat-checkbox ></mat-checkbox>  
+        </th>  
+        <td mat-cell *matCellDef="let row">  
+            <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null"  
+[checked]="selection.isSelected(row)" [aria-label]="checkboxLabel(row)" (click)="row.highlighted = !row.highlighted"></mat-checkbox>  
+        </td>  
+    </ng-container>
+      <!-- Name Column -->
+      <ng-container matColumnDef="employeeCode">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>  Employee Code 
+        </mat-header-cell>
+       
+        <mat-cell *matCellDef="let element"> {{element.employeeCode}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="salesForceUserID">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> SalesForce ID </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.salesForceUserID}} </mat-cell>
+      </ng-container>
+      <!-- Weight Column -->
+      <ng-container matColumnDef="firstName">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> First Name </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.firstName}} </mat-cell>
+      </ng-container>
+  
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="lastName">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Last Name </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.lastName}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="costCenter">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Cost Center </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.costCenter}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="username">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Username </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.username}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="disabled">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Disabled </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.disabled}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="type">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Type </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.type}} </mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef>
+          
+        </mat-header-cell>
+        <mat-cell *matCellDef="let row; let i=index;">
+          <button mat-icon-button style="color: rgb(67, 186, 233);" (click)="EditDriver(this.row)" matToolTip="Edit">
+            <mat-icon aria-label="Edit">edit</mat-icon>
+          </button>
+  
+          <button mat-icon-button style="color: rgb(67, 186, 233);" (click)="DeleteDriver(row.employeeCode)" matToolTip="Delete">
+            <mat-icon aria-label="Delete">delete</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
+  
+      <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"
+			[ngClass]="{hovered: row.hovered, highlighted: row.highlighted}"
+			(mouseover)="row.hovered = true" 
+			(mouseout)="row.hovered = false"></mat-row>
+    </mat-table>
+    <mat-paginator class="mat-elevation-z8 mat-paginator-sticky" [pageSizeOptions]="[10, 50, 100]"></mat-paginator>
+  </div>
+  <ngx-spinner bdColor="rgba(70, 70, 70, 0.6)" size="default"  type="ball-spin-clockwise" [fullScreen]="false">
+    <p style="color: white"></p>
+</ngx-spinner>

@@ -1,0 +1,71 @@
+.logo{
+    position: relative;
+    left: 8.5%;
+}
+
+.welcome{
+    position: relative;
+    left: 10%;
+}
+.mat-form-field-appearance-outline .mat-form-field-outline{
+  height: 91px !important;
+}
+
+.split {
+    height: 100%;
+    width: 50%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    overflow-x: hidden;
+    padding-top: 20px;
+  }
+  
+  .left {
+    left: 0;
+    background-color: #fff;
+  }
+  
+  .right {
+    right: 0;
+    background-color:rgb(67, 186, 233);
+  }
+  
+  .centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+  
+  .centered img {
+    width: 150px;
+    border-radius: 50%;
+  }
+
+  .mat-form-field-appearance-outline .mat-form-field-outline{
+      height: 70px;
+  }
+
+  .v1 {
+    border-left: 75px solid yellow;
+    height: 285px;
+    position: absolute;
+    left: 10%;
+      top: 0;
+  }
+
+  .v2 {
+    border-left: 75px solid white;
+    height: 285px;
+    position: absolute;
+    right: 10%;
+      bottom: 0;
+  }
+
+  .text{
+      top: 41%;
+      position:absolute;
+      left: 44%;
+  }

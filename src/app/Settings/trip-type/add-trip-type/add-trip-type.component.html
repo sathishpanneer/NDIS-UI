@@ -1,0 +1,60 @@
+<div class="container">
+    <h3 mat-dialog-title>Add Trip Type</h3>
+  
+    <form class="mat-dialog-content" #formControl="ngForm">
+      <div class="form">
+        <mat-form-field appearance="outline">
+          <mat-label>Description</mat-label>
+          <input matInput #input class="form-control" [(ngModel)]="data.description" placeholder="Description"
+            name="description">
+          <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+      </div>
+  
+      <div class="form">
+        <mat-form-field appearance="outline">
+          <mat-label>Customer Required</mat-label>
+          <input matInput #input class="form-control" [(ngModel)]="data.customerRequired"  name="customerRequired">
+          <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="form">
+        <mat-form-field appearance="outline">
+          <mat-label>Vehicle Type</mat-label>
+          <input matInput #input class="form-control" [(ngModel)]="data.vehicleType"  name="vehicleType">
+          <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="form">
+        <mat-form-field appearance="outline">
+          <mat-label>Billable To SalesForce</mat-label>
+          <input matInput #input class="form-control" [(ngModel)]="data.billableToSalesForce"  name="billableToSalesForce">
+          <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="form">
+        <mat-form-field appearance="outline">
+          <mat-label>Cost Center Type</mat-label>
+          <input matInput #input class="form-control" [(ngModel)]="data.costCenterType" name="costCenterType">
+          <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="form">
+        <mat-form-field appearance="outline">
+          <mat-label>Default Cost Center</mat-label>
+          <input matInput #input class="form-control" [(ngModel)]="data.defaultCostCenter" name="defaultCostCenter">
+          <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+      </div>
+
+      
+      <div mat-dialog-actions>
+        <button mat-raised-button style="background-color: rgb(67, 186, 233); left: 30%;" type="button" [disabled]="!formControl.valid"
+          [mat-dialog-close]="1">Save</button>
+        <button mat-stroked-button style="left: 30%;" (click)="cancel()" type="button" tabindex="-1">Cancel</button>
+      </div>
+    </form>
+  </div>

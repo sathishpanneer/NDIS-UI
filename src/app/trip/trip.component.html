@@ -1,0 +1,142 @@
+<div class="search">
+  
+    <mat-form-field appearance="outline" style="padding-top: 25px;">
+      
+      <mat-label>Search</mat-label>
+      <input #txtVal (keyup)="applyFilter(txtVal.value)" matInput>
+      <mat-icon matPrefix>search</mat-icon>
+    </mat-form-field>
+  <!-- <div class="spacer"></div>
+
+    <p>Report for</p>&nbsp; &nbsp; <p style="font-weight: 500;"> Last 30 days</p> &nbsp;
+    <div style="display: flex;">
+      <mat-icon style="width: 10px;" >date_range</mat-icon>  &nbsp; &nbsp;  
+    <mat-icon >keyboard_arrow_down</mat-icon>&nbsp;
+     <mat-icon >notifications</mat-icon> &nbsp;  &nbsp;  
+     <p style="font-weight: 500;">Alex</p>  &nbsp;
+    <mat-icon >person</mat-icon>
+  </div> -->
+
+<button mat-fab style=" position: relative; left: 69%; background-color:  rgb(67, 186, 233);" (click)="AddTrip()" matToolTip="Add new">
+  <mat-icon aria-label="add">add</mat-icon>
+</button>
+</div>     
+<div class="example-container mat-elevation-z8">
+    <mat-table style="height: 91%; overflow: auto;" #table [dataSource]="dataSource" matSort  matSortDisableClear matSortDirection="desc" >
+  
+      <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+  
+      <!-- Position Column -->
+      
+      <ng-container matColumnDef="select">  
+        <th  mat-header-cell *matHeaderCellDef>  
+            <mat-checkbox ></mat-checkbox>  
+        </th>  
+        <td mat-cell *matCellDef="let row">  
+            <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null"  
+[checked]="selection.isSelected(row)" [aria-label]="checkboxLabel(row)" (click)="row.highlighted = !row.highlighted"></mat-checkbox>  
+        </td>  
+    </ng-container>
+      <!-- Name Column -->
+      <ng-container matColumnDef="tripID">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>  Trip ID
+        </mat-header-cell>
+       
+        <mat-cell *matCellDef="let element"> {{element.tripID}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="tripTypeID">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Type ID </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.tripTypeID}} </mat-cell>
+      </ng-container>
+      <!-- Weight Column -->
+      <ng-container matColumnDef="tripDescription">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Description </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.tripDescription}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="registration">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Registration </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.registration}} </mat-cell>
+      </ng-container>
+  
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="plannedKM">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Planned KM </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.plannedKM}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="actualKM">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Actual KM </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.actualKM}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="startDate">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Start Date </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.startDate| date: 'dd/MM/yyyy'}} </mat-cell>
+      </ng-container>
+
+      
+
+      <ng-container matColumnDef="endDate">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> End Date </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.endDate| date: 'dd/MM/yyyy'}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="plannedStartStreet">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Planned Start Street </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.plannedStartStreet}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="plannedStartCity">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Planned Start City</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.plannedStartCity}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="plannedStartState">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Planned Start State </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.plannedStartState}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="plannedStartPostalCode">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> PlannedStart Postal Code </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.plannedStartPostalCode}} </mat-cell>
+      </ng-container>
+
+      <!-- <ng-container matColumnDef="tripStatus">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Trip Status </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.tripStatus}} </mat-cell>
+      </ng-container> -->
+
+      <!-- <ng-container matColumnDef="multiTrip">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Multi Trip</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.multiTrip}} </mat-cell>
+      </ng-container> -->
+
+      <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef>
+          
+        </mat-header-cell>
+        <mat-cell *matCellDef="let row; let i=index;">
+          <button mat-icon-button style="color: rgb(67, 186, 233);" (click)="EditTrip(this.row)" matToolTip="Edit">
+            <mat-icon aria-label="Edit">edit</mat-icon>
+          </button>
+  
+          <button mat-icon-button style="color: rgb(67, 186, 233);" (click)="DeleteTrip(row.tripID)" matToolTip="Delete">
+            <mat-icon aria-label="Delete">delete</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
+  
+      <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"
+      [ngClass]="{hovered: row.hovered, highlighted: row.highlighted}"
+			(mouseover)="row.hovered = true" 
+			(mouseout)="row.hovered = false"></mat-row>
+    </mat-table>
+    <mat-paginator class="mat-elevation-z8 mat-paginator-sticky" [pageSizeOptions]="[10, 50, 100]"></mat-paginator>
+  </div>
+  <ngx-spinner bdColor="rgba(70, 70, 70, 0.6)" size="default"  type="ball-spin-clockwise" [fullScreen]="false">
+    <p style="color: white"></p>
+</ngx-spinner>

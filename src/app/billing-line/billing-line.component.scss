@@ -1,0 +1,27 @@
+.container{
+    position:absolute;
+    top: 10%;
+    left: 1%;
+    right: 1%;
+    border: 1px solid;
+    padding: 10px;  
+    color: lightgrey;
+}
+
+.user{
+    position:absolute;
+    top:3%;
+    left: 90%;
+    //max-width: 120px;
+}
+.calendar{
+    position:absolute;
+    top:3%;
+    left: 80%;
+    max-width: 120px;
+}
+
+::ng-deep .dx-datagrid-headers .dx-header-row{  
+    background-color: #0086B1;  
+    color: white;
+  }

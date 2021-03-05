@@ -1,0 +1,76 @@
+<div class="container">
+    <h3 mat-dialog-title>Update Driver</h3>
+  
+    <form class="mat-dialog-content" #formControl="ngForm">
+      <div class="form">
+        <mat-form-field appearance="outline">
+          <mat-label>Employee Code</mat-label>
+          <input matInput #input class="form-control" [(ngModel)]="data.employeeCode" placeholder="EmployeeCode"
+            name="employeeCode">
+          <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+      </div>
+  
+      <div class="form">
+        <mat-form-field appearance="outline">
+          <mat-label>Sales Force UserID</mat-label>
+          <input matInput #input class="form-control" [(ngModel)]="data.salesForceUserID" placeholder="Address" name="salesForceUserID">
+          <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="form">
+        <mat-form-field appearance="outline">
+          <mat-label>First Name</mat-label>
+          <input matInput #input class="form-control" [(ngModel)]="data.firstName" placeholder="FirstName" name="firstName">
+          <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="form">
+        <mat-form-field appearance="outline">
+          <mat-label>Last Name</mat-label>
+          <input matInput #input class="form-control" [(ngModel)]="data.lastName" placeholder="LastName" name="lastName">
+          <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="form">
+        <mat-form-field appearance="outline">
+          <mat-label>Cost Center</mat-label>
+          <input matInput #input class="form-control" [(ngModel)]="data.costCenter" placeholder="CostCenter" name="costCenter">
+          <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="form">
+        <mat-form-field appearance="outline">
+          <mat-label>username</mat-label>
+          <input matInput #input class="form-control" [(ngModel)]="data.username" placeholder="Username" name="username">
+          <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="form">
+        <mat-form-field appearance="outline">
+          <mat-label>Disabled</mat-label>
+          <input matInput #input class="form-control" [(ngModel)]="data.disabled" placeholder="Disabled" name="disabled">
+          <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="form">
+        <mat-form-field appearance="outline">
+          <mat-label>Type</mat-label>
+          <input matInput #input class="form-control" [(ngModel)]="data.type" placeholder="Type" name="type">
+          <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+      </div>
+
+      
+      <div mat-dialog-actions>
+        <button mat-raised-button style="background-color: rgb(67, 186, 233); left: 30%;" type="button" [disabled]="!formControl.valid"
+          [mat-dialog-close]="1">Update</button>
+        <button mat-stroked-button style="left: 30%;" (click)="cancel()" type="button" tabindex="-1">Cancel</button>
+      </div>
+    </form>
+  </div>

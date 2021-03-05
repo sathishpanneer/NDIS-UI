@@ -1,0 +1,22 @@
+
+<div>
+    <mat-drawer-container class="container">
+      <mat-drawer mode="side" opened style="overflow: hidden;" class="sibebar-content">
+        <div class="logo">
+          <img style="width: 50%;" src="../../assets/Images/abi.png" />
+          
+          </div>
+        <ng-material-multilevel-menu style="position: absolute; left: 15%;" [items]='navItems' (selectedItem)="selectedItem($event)">
+        </ng-material-multilevel-menu>
+      </mat-drawer>
+      <mat-drawer-content class="content">
+  
+        <!-- <app-welcome
+          *ngIf="!hasRoute('language') && !hasRoute('appSetting') && !hasRoute('systemNotification') && !hasRoute('cvparsing') && !hasRoute('welcome')">
+        </app-welcome> -->
+        <router-outlet></router-outlet>
+      </mat-drawer-content>
+  
+    </mat-drawer-container>
+    
+  </div>

@@ -1,0 +1,47 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    min-width: 350px;
+    min-height: 300px;
+  }
+  
+  .container > * {
+    width: 100%;
+  }
+  
+  .form {
+    display: flex;
+    padding-top: 6px;
+  }
+  
+  .mat-form-field {
+    font-size: 16px;
+    flex-grow: 1;
+  }
+  .mat-dialog-content {
+//overflow: hidden !important;
+//height: 245px;
+  }
+
+  .mat-dialog-actions {
+    padding: 25px 0;
+  }
+  .split {
+    height: 100%;
+    width: 50%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    overflow-x: hidden;
+    padding-top: 20px;
+  }
+  
+  .left {
+    left: 0;
+    background-color: #fff;
+  }
+  
+  .right {
+    right: 0;
+    background-color:rgb(67, 186, 233);
+  }

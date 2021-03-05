@@ -1,0 +1,89 @@
+
+
+
+<div class="dx-field-value calendar" >
+    <dx-date-box
+    [value]="now"
+        type="date">
+    </dx-date-box>
+    <!-- <dx-date-box 
+    [max]="endValue"
+    [value]="startValue">
+</dx-date-box>
+<dx-date-box 
+    [min]="startValue"
+    [value]="endValue">
+</dx-date-box> -->
+</div>
+<div class="user">
+    <dx-button
+    icon="user"
+    text="David">
+</dx-button>
+</div>
+
+<div class="container">
+    
+    <dx-data-grid  [dataSource]="dataSource" 
+    [showColumnLines]="true"
+    [showRowLines]="true"
+    [showBorders]="true"
+    [rowAlternationEnabled]="true"
+    keyExpr="billingID"
+    [allowColumnResizing]="true"
+    [allowColumnReordering]="true"
+    [columnAutoWidth]="true"
+    (onEditingStart)="logEvent('EditingStart')"
+    (onInitNewRow)="logEvent('InitNewRow')"
+    (onRowInserting)="logEvent('RowInserting')"
+    (onRowInserted)="logEvent('RowInserted')"
+    (onRowUpdating)="logEvent('RowUpdating')"
+    (onRowUpdated)="logEvent('RowUpdated')"
+    (onRowRemoving)="logEvent('RowRemoving')"
+    (onRowRemoved)="DeleteBillingLine($event)"
+    (onSaving)="AddBillingLine($event)"
+    (onSaved)="logEvent('Saved')"
+    (onEditCanceling)="logEvent('EditCanceling')"
+    (onEditCanceled)="logEvent('EditCanceled')">
+    <dxo-state-storing [enabled]="true" type="localStorage" storageKey="storage"></dxo-state-storing>
+    <dxo-selection
+            
+            mode="multiple"
+        ></dxo-selection>
+        <dxo-filter-row [visible]="true" ></dxo-filter-row>
+    <dxo-header-filter [visible]="true"></dxo-header-filter>
+    
+    <dxo-search-panel 
+        [visible]="true" 
+        [width]="240" 
+        placeholder="Search..." 
+         ></dxo-search-panel>
+    
+    <dxo-editing mode="row" [allowAdding]="true" [allowUpdating]="true" [allowDeleting]="true" [useIcons]="true">
+    </dxo-editing>
+    <dxo-paging [pageSize]="13"></dxo-paging>
+    <dxo-pager 
+        [showPageSizeSelector]="true"
+        [allowedPageSizes]="[15, 20]"
+        [showInfo]="false"
+        [showNavigationButtons]="true">
+
+    </dxo-pager>
+        <dxi-column dataField="billingID" [width]="88">
+            
+        </dxi-column>
+        <dxi-column dataField="tripID" [width]="80"></dxi-column>
+        <dxi-column dataField="serviceAgreementID" [width]="170"></dxi-column>
+        <dxi-column dataField="serviceAgreementItemID" [width]="200"></dxi-column>
+        <dxi-column dataField="rate" [width]="70"></dxi-column>
+        <dxi-column dataField="unitOfMeasure" [setCellValue]="setStateValue" [width]="140">
+            <dxo-lookup [dataSource]="unitOfMeasureLook" valueExpr="ID" displayExpr="Name"></dxo-lookup>
+        </dxi-column>
+        <dxi-column dataField="dateCreated" [width]="120" dataType="date"></dxi-column>
+        <dxi-column dataField="dateTransferred" [width]="135" dataType="date"></dxi-column>
+        <dxi-column dataField="approved" [width]="115" dataType = "boolean"></dxi-column>
+        
+    
+    </dx-data-grid>
+    
+</div>

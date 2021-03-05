@@ -1,0 +1,29 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    min-width: 350px;
+    min-height: 300px;
+  }
+  
+  .container > * {
+    width: 100%;
+  }
+  
+  .form {
+    display: flex;
+    padding-top: 6px;
+  }
+  
+  .mat-form-field {
+    font-size: 16px;
+    flex-grow: 1;
+  }
+  .mat-dialog-content {
+//overflow: hidden !important;
+//height: 245px;
+  }
+
+  .mat-dialog-actions {
+    padding: 25px 0;
+  }
+  

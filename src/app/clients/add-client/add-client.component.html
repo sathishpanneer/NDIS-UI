@@ -1,0 +1,43 @@
+<div class="container">
+    <h3 mat-dialog-title>Add Client</h3>
+  
+    <form class="mat-dialog-content" #formControl="ngForm">
+      <div class="form">
+        <mat-form-field appearance="outline">
+          <mat-label>Name</mat-label>
+          <input matInput #input class="form-control" [(ngModel)]="data.clientName" placeholder="Name"
+            name="clientName">
+          <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+      </div>
+  
+      <div class="form">
+        <mat-form-field appearance="outline">
+          <mat-label>Address</mat-label>
+          <input matInput #input class="form-control" [(ngModel)]="data.homeAddress" placeholder="Address" name="homeAddress" required>
+          <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="form">
+        <mat-form-field appearance="outline">
+          <mat-label>Contact</mat-label>
+          <input matInput #input class="form-control" [(ngModel)]="data.contact" placeholder="Contact" name="contact">
+          <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="form">
+        <mat-form-field appearance="outline">
+          <mat-label>Trips</mat-label>
+          <input matInput #input class="form-control" [(ngModel)]="data.numberOfTrips" placeholder="Trips" name="numberOfTrips">
+          <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+      </div>
+      
+      <div mat-dialog-actions>
+        <button mat-raised-button style="background-color: rgb(67, 186, 233); left: 30%;" type="button" [disabled]="!formControl.valid"
+          [mat-dialog-close]="1">Save</button>
+        <button mat-stroked-button style="left: 30%;" (click)="cancel()" type="button" tabindex="-1">Cancel</button>
+      </div>
+    </form>
+  </div>
